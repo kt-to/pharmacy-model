@@ -5,23 +5,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QWidget>
+#include <QMainWindow>
 
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class mainwindow; }
-QT_END_NAMESPACE
-
-class mainwindow : public QWidget {
-Q_OBJECT
-
+class mainwindow : public QMainWindow{
 public:
-    explicit mainwindow(QWidget *parent = nullptr);
-    ~mainwindow() override;
-
-private:
-    Ui::mainwindow *ui;
+    mainwindow() = default;
 };
+
 
 
 #endif //MAINWINDOW_H

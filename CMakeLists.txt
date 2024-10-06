@@ -10,12 +10,13 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(pharmacy_model
-        main.cpp tablet.h
+        main.cpp
+        mainwindow.cpp
         mainwindow.h
-        mainwindow.cpp)
+)
 target_link_libraries(pharmacy_model
         Qt::Core
         Qt::Gui

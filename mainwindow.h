@@ -6,10 +6,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QPushButton>
+#include <QPixmap>
+#include <QLabel>
 class mainwindow : public QMainWindow{
 public:
-    mainwindow() = default;
+    mainwindow(std::string s) ;
+    void setbeer(std::string s) ;
+private:
+    QPushButton *start;
+    std::string put;
 };
 
 

@@ -4,4 +4,4 @@ project(pharmacy_model)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(pharmacy_model
-        main.cpp)
+        main.cpp tablet.h)

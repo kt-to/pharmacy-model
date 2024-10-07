@@ -17,7 +17,7 @@ person::person() {
     }
     _surname = gen_surname();
     _age = 16 + (r2d2() % 74);
-    _free_time = r2d2() % 3600;
+    _free_time = r2d2() % (24 * 60);
     _coins = r2d2() % 10'000;
     _med_card = {};
     _therapy = {};
@@ -25,8 +25,11 @@ person::person() {
 
 void person::print() {
     std::cout << "-------------------\n";
-    std::cout << "   name  " << _name << "\n";
-    std::cout << "surname  " << _surname << "\n";
-    std::cout << "    age  " << _age << "\n";
+    std::cout << "    name             " << _name << "\n";
+    std::cout << "    surname          " << _surname << "\n";
+    std::cout << "    age              " << _age << "\n";
+    std::cout << "    time when coll   " << _free_time / 60
+    << ":" << _free_time % 60 << "\n";
+    std::cout << "    coins            " << _coins << "\n";
     std::cout << "-------------------\n";
 }

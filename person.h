@@ -12,6 +12,7 @@ public:
     person();
     void print();
 private:
+    std::pair<int, int> _address;
     int _age;
     size_t _free_time;
     long long _coins;

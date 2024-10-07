@@ -1,6 +1,7 @@
 //
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
+#pragma once
 #include "back.h"
 #include "string"
 #include "vector"
@@ -11,11 +12,14 @@ public:
 
     void print();
 
+    void set_ref(std::string text);
+    void set_name(std::string name);
+
     std::string get_ref();
 private:
     std::string _name;
     std::string _reference;
-    std::vector<ill> _indications;
+    ill _indications;
     int level;
 };
 

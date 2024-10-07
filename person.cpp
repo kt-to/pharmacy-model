@@ -4,10 +4,9 @@
 //#pragma once
 #include "person.h"
 #include "medicament.h"
-#include "ctime"
+#include "random"
 
 person::person() {
-    srand(time(0));
     _gender = (rand() % 2 == 1);
     if (_gender) {
         _name = gen_man();
@@ -21,8 +20,8 @@ person::person() {
 }
 
 void person::print() {
-    std::cout << "name: " << _name << "\n";
-    std::cout << "surname: " << _surname << "\n";
-    std::cout << "age: " << _age << "\n";
+    std::cout << "   name  " << _name << "\n";
+    std::cout << "surname  " << _surname << "\n";
+    std::cout << "    age  " << _age << "\n";
     std::cout << "-------------------------------\n";
 }

@@ -4,6 +4,10 @@
 #pragma once
 #include "back.h"
 #include "vector"
+#include "random"
+
+std::mt19937 rd(time(nullptr));
+
 
 std::string gen_man() {
     srand(time(0));
@@ -15,7 +19,8 @@ std::string gen_man() {
         "Willi", "Wenzel", "Adolf",
         "Vlaaaaad"
     };
-    return all[rand() % all.size()];
+
+    return all[rd() % all.size()];
 }
 
 std::string gen_women() {
@@ -28,7 +33,7 @@ std::string gen_women() {
             "Kerstin", "Wenzel", "Adolf",
             "Tanja"
     };
-    return all[rand() % all.size()];
+    return all[rd() % all.size()];
 }
 
 std::string gen_surname() {
@@ -46,6 +51,6 @@ std::string gen_surname() {
             "Teicher", "Wadewitz", "Weisiger", "Wiest",
             "Wunsch"
     };
-    return all[rand() % all.size()];
+    return all[rd() % all.size()];
 }
 

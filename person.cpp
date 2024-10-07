@@ -6,22 +6,25 @@
 #include "medicament.h"
 #include "random"
 
+std::mt19937 r2d2(time(nullptr));
+
 person::person() {
-    _gender = (rand() % 2 == 1);
+    _gender = (r2d2() % 2 == 1);
     if (_gender) {
         _name = gen_man();
     } else {
         _name = gen_women();
     }
     _surname = gen_surname();
-    _age = 16 + (rand() % 74);
+    _age = 16 + (r2d2() % 74);
     _med_card = {};
     _therapy = {};
 }
 
 void person::print() {
+    std::cout << "-------------------\n";
     std::cout << "   name  " << _name << "\n";
     std::cout << "surname  " << _surname << "\n";
     std::cout << "    age  " << _age << "\n";
-    std::cout << "-------------------------------\n";
+    std::cout << "-------------------\n";
 }

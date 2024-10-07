@@ -18,9 +18,9 @@ public:
     void beer_press();
     void beer_update();
 private:
-    QPushButton *start;
-    QPushButton *beerButton;
-    std::string put;
+    QPushButton *start = 0;
+    QPushButton *beerButton = 0;
+    std::string put ;
     QTimer * beer_timer;
     int beer_curr_i = 0;
     int beer_curr_j = 0;

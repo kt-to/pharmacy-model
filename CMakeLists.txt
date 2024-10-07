@@ -18,6 +18,7 @@ add_executable(pharmacy_model
         mainwindow.h
         modeling.h
         modeling.cpp
+        Animation.h
 )
 target_link_libraries(pharmacy_model
         Qt::Core

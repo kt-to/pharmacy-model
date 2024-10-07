@@ -20,7 +20,7 @@ mainwindow::mainwindow(std::string s) {
     beerButton->setGeometry(QRect(800, 500, 100, 100));
     beerButton->setStyleSheet("background-color: rgba(255, 255, 255, 0); ");
     beer_timer = new QTimer(this);
-    beer_timer->setInterval(100);
+    beer_timer->setInterval(50);
     connect(start, &QPushButton::clicked, this, &mainwindow::start_press);
     connect(beerButton, &QPushButton::clicked, this, &mainwindow::beer_press);
     connect(beer_timer, &QTimer::timeout, this, &mainwindow::beer_update);
@@ -59,7 +59,7 @@ void mainwindow::setbeer(std::string s) {
 }
 
 void mainwindow::start_press() {
-    modeling * mod = new modeling();
+    modeling * mod = new modeling(QString::fromStdString(put));
     mod->show();
     this->hide();
 }
@@ -77,7 +77,7 @@ void mainwindow::beer_update() {
     beer->setPixmap(*pix);
     beer->show();
     beer_curr_i+=150;
-    beer_curr_j+=(beer_curr_i > 1000 ? 150: 0);
+    beer_curr_j+=(beer_curr_i > 1000 ? 110: 0);
     if(beer_curr_i > 1000) beer_curr_i = 0;
     if(beer_curr_j > 700) beer_timer->stop();
 }

@@ -17,6 +17,8 @@ person::person() {
     }
     _surname = gen_surname();
     _age = 16 + (r2d2() % 74);
+    _free_time = r2d2() % 3600;
+    _coins = r2d2() % 10'000;
     _med_card = {};
     _therapy = {};
 }

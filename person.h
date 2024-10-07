@@ -13,6 +13,8 @@ public:
     void print();
 private:
     int _age;
+    size_t _free_time;
+    long long _coins;
     bool _gender;
     std::string _name;
     std::string _surname;

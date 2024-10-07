@@ -10,7 +10,7 @@ std::string gen_man() {
     std::vector<std::string> all {
         "Adelbert", "Alois", "Bernhard",
         "Christoph", "Dieter", "Gustl",
-        "Hanno", "Götz", "Eric", "Henri",
+        "Hanno", "Gotz", "Eric", "Henri",
         "Jan", "Johann", "Konrad",
         "Willi", "Wenzel", "Adolf",
         "Vlaaaaad"
@@ -27,6 +27,24 @@ std::string gen_women() {
             "Hilda", "Irmgard", "Johanna",
             "Kerstin", "Wenzel", "Adolf",
             "Tanja"
+    };
+    std::mt19937 rd;
+    return all[rd() % all.size()];
+}
+
+std::string gen_surname() {
+    std::vector<std::string> all {
+            "Angerer", "Beckmann", "Brandner",
+            "Bromberger", "Cronauer", "Dannecker",
+            "Donauer", "Emberg", "Engelkes", "Felber",
+            "Fulde", "Grotz", "Halpern",
+            "Heckendorf", "Schwaiger", "Schlitt",
+            "Saffer", "Rossbach", "Regener", "Preuss",
+            "Pirner", "Neureuther", "Luft", "Laub",
+            "Krumbiegel", "Keil", "Hofer", "Hildner",
+            "Schwichtenberg", "Stalter", "Stibbe",
+            "Teicher", "Wadewitz", "Weisiger", "Wiest",
+            "Wunsch"
     };
     std::mt19937 rd;
     return all[rd() % all.size()];

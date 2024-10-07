@@ -4,19 +4,18 @@
 //#pragma once
 #include "person.h"
 #include "medicament.h"
-#include "random"
+#include "ctime"
 
 person::person() {
     srand(time(0));
-    std::mt19937 rd;
-    _gender = (rd() % 2 == 1);
+    _gender = (rand() % 2 == 1);
     if (_gender) {
         _name = gen_man();
     } else {
         _name = gen_women();
     }
     _surname = gen_surname();
-    _age = 16 + (rd() % 74);
+    _age = 16 + (rand() % 74);
     _med_card = {};
     _therapy = {};
 }

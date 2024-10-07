@@ -34,5 +34,5 @@ void person::print() {
     std::cout << "    time when coll   " << _free_time / 60
     << ":" << _free_time % 60 << "\n";
     std::cout << "    coins            " << _coins << "\n";
-    std::cout << "---------------------------------------\n";
+    std::cout << "---------------------------------------\n\n\n\n\n\n\n\n\n";
 }

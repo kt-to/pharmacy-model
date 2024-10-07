@@ -7,6 +7,7 @@
 #include "random"
 
 std::string gen_man() {
+    srand(time(0));
     std::vector<std::string> all {
         "Adelbert", "Alois", "Bernhard",
         "Christoph", "Dieter", "Gustl",
@@ -20,6 +21,7 @@ std::string gen_man() {
 }
 
 std::string gen_women() {
+    srand(time(0));
     std::vector<std::string> all {
             "Anne", "Annika", "Berta",
             "Bianka", "Carry", "Elke",
@@ -33,6 +35,7 @@ std::string gen_women() {
 }
 
 std::string gen_surname() {
+    srand(time(0));
     std::vector<std::string> all {
             "Angerer", "Beckmann", "Brandner",
             "Bromberger", "Cronauer", "Dannecker",

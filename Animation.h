@@ -44,7 +44,7 @@ private:
     QPropertyAnimation *animation;
     QPropertyAnimation *process;
 
-
+//ура
 };
 
 

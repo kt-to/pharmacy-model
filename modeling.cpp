@@ -186,6 +186,7 @@ void modeling::stop_2() {
         }
     }
 }
+//ура
 void modeling::stop_3() {
     if(delliveler3) {
         delete delliveler3;

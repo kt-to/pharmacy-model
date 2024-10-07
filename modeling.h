@@ -41,7 +41,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsView *view;
     QTimer * check_timer;
-
+//ура
     Animation *animation1;
     Animation *animation2;
     Animation *animation3;

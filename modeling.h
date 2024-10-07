@@ -29,7 +29,9 @@ private:
     QLabel *delliveler1 = 0, *delliveler2 = 0, *delliveler3 = 0;
     QThread *frst, *scnd, *thrd;
     std::queue < std::vector <QPoint>> deliver_queue;
-    QTimer *deliver_timer;
+    QTimer *deliver_timer1;
+    QTimer *deliver_timer2;
+    QTimer *deliver_timer3;
     QLabel* back;
     QGraphicsScene *scene;
     QGraphicsView *view;

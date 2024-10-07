@@ -25,7 +25,9 @@ public:
     void stop_1();
     void stop_2();
     void stop_3();
+    void update_time();
 private:
+    QLabel* curr_time;
     QPushButton *order;
     QString file;
     QPoint *beg = new QPoint(1050, 940);
@@ -42,6 +44,8 @@ private:
     QGraphicsView *view;
     QTimer * check_timer;
 //ура
+    int min, hour;
+    QTimer* time;
     Animation *animation1;
     Animation *animation2;
     Animation *animation3;

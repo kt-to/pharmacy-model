@@ -48,19 +48,27 @@ modeling::modeling(QString s) {
     scnd = new QThread();
     thrd = new QThread();
 
+    time = new QTimer();
+    time->setInterval(2000/60);
+    time->start();
+    min = 0;
+    hour = 8;
     order = new QPushButton(this);
     order->setGeometry(QRect(10, 10, 75, 25));
     order->setText("Order");
     check_timer = new QTimer(this);
     check_timer->setInterval(100);
 
+    curr_time = new QLabel(this);
+    curr_time->setGeometry(QRect(150, 10, 75, 25));
+    curr_time->setText("8:00");
+
+    connect(time, &QTimer::timeout, this, &modeling::update_time);
     connect(order, &QPushButton::clicked, this, &modeling::send_order);
     connect(deliver_timer1, &QTimer::timeout, this, &modeling::deliver_order);
     connect(deliver_timer2, &QTimer::timeout, this, &modeling::deliver_order);
     connect(deliver_timer3, &QTimer::timeout, this, &modeling::deliver_order);
 }
-
-
 
 
 void modeling::new_order(int a, int b) {
@@ -82,6 +90,7 @@ void modeling::new_order(int a, int b) {
     // b = vertical_roads[last_vertucal_road] - 10;
     int curr_h;
     int curr_v;
+
     curr_v = beg->x();
     curr_h = beg->y();
     std::vector <QPoint> points;
@@ -112,7 +121,7 @@ void modeling::deliver_order() {
         for(int i = 1; i < points.size(); ++i) {
             QGraphicsLineItem * line = new QGraphicsLineItem();
             line->setPen(QPen(Qt::red));
-            line->setLine(QLine(points[i-1] + QPoint(2, 2), points[i]+ QPoint(2, 2)));
+            line->setLine(QLine(points[i-1] + QPoint(3, 3), points[i]+ QPoint(3, 3)));
             item.push_back(line);
             scene->addItem(line);
         }
@@ -196,4 +205,19 @@ void modeling::stop_3() {
             delete items3[i];
         }
     }
+}
+
+void modeling::update_time() {
+    if(min == 59) {
+        hour++;
+        min = 0;
+    } else {
+
+        min++;
+    }
+    if(hour == 23) {
+        time->stop();
+    }
+    curr_time->setText(QString::number(hour) + ':' +  ( (min < 10) ? QString::number(0): "") + QString::number(min));
+
 }

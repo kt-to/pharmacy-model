@@ -96,10 +96,9 @@ void modeling::deliver_order() {
         deliver_queue.pop();
         if(!delliveler1) {
             delliveler1 = new QLabel();
-            delliveler1->setGeometry(QRect(beg->x(), beg->y(), 10, 10));
-            delliveler1->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 4px;");
+            delliveler1->setGeometry(QRect(beg->x(), beg->y(), 5, 5));
+            delliveler1->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 2px;");
             scene->addWidget(delliveler1);
-            delliveler1->show();
             Animation *a = new Animation(points);
             a->moveToThread(frst);
             a->startAnimation(delliveler1);
@@ -107,7 +106,7 @@ void modeling::deliver_order() {
 
         } else if(!delliveler2) {
             delliveler2 = new QLabel();
-            delliveler2->setGeometry(QRect(beg->x(), beg->y(), 10, 10));
+            delliveler2->setGeometry(QRect(beg->x(), beg->y(), 5, 5));
             delliveler2->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 2px;");
             delliveler2->show();
             scene->addWidget(delliveler2);
@@ -117,7 +116,7 @@ void modeling::deliver_order() {
             delete delliveler2;
         } else {
             delliveler3 = new QLabel();
-            delliveler3->setGeometry(QRect(beg->x(), beg->y(), 100, 100));
+            delliveler3->setGeometry(QRect(beg->x(), beg->y(), 5, 5));
             delliveler3->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 2px;");
             delliveler3->show();
             scene->addWidget(delliveler3);

@@ -24,9 +24,7 @@ modeling::modeling(QString s) {
     vertical_roads[1] = 445;
     vertical_roads[2] = 731;
     vertical_roads[3] = 1050;
-    frst = new QThread();
-    scnd = new QThread();
-    thrd = new QThread();
+
     deliver_timer1 = new QTimer(this);
     deliver_timer1->setInterval(1000);
     deliver_timer1->start();
@@ -46,6 +44,9 @@ modeling::modeling(QString s) {
     QPixmap pixmap = QPixmap(file + "/images/map.jpg");
     back->setPixmap(pixmap);
     scene->addWidget(back);
+    frst = new QThread();
+    scnd = new QThread();
+    thrd = new QThread();
 
     order = new QPushButton(this);
     order->setGeometry(QRect(10, 10, 75, 25));
@@ -113,6 +114,7 @@ void modeling::deliver_order() {
             scene->addItem(line);
         }
         if(!delliveler1) {
+
             delliveler1 = new QLabel();
             delliveler1->setGeometry(QRect(beg->x(), beg->y(), 7, 7));
             delliveler1->setFixedSize(7, 7);
@@ -120,12 +122,14 @@ void modeling::deliver_order() {
             scene->addWidget(delliveler1);
             Animation *a = new Animation(points, delliveler1);
             a->moveToThread(frst);
-            a->startAnimation(delliveler1);
+            frst->start();
+            a->startAnimation(delliveler1, item);
 
             delete delliveler1;
             delliveler1 = 0;
 
         } else if(!delliveler2) {
+
             delliveler2 = new QLabel();
             delliveler2->setGeometry(QRect(beg->x(), beg->y(), 7, 7));
             delliveler2->setFixedSize(7, 7);
@@ -134,10 +138,13 @@ void modeling::deliver_order() {
             scene->addWidget(delliveler2);
             Animation *a = new Animation(points);
             a->moveToThread(scnd);
-            a->startAnimation(delliveler2);
+            scnd->start();
+            a->startAnimation(delliveler2, item);
+
             delete delliveler2;
             delliveler2 = 0;
         } else {
+
             delliveler3 = new QLabel();
             delliveler3->setGeometry(QRect(beg->x(), beg->y(), 7, 7));
             delliveler3->setFixedSize(7, 7);
@@ -146,13 +153,13 @@ void modeling::deliver_order() {
             scene->addWidget(delliveler3);
             Animation *a = new Animation(points);
             a->moveToThread(thrd);
-            a->startAnimation(delliveler3);
+            thrd->start();
+            a->startAnimation(delliveler3, item);
+
             delete delliveler3;
             delliveler3  = 0;
         }
 
-        for(int i= 0; i < item.size(); ++i) {
-            delete item[i];
-        }
+
     }
 }

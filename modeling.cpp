@@ -51,6 +51,9 @@ modeling::modeling(QString s) {
     order = new QPushButton(this);
     order->setGeometry(QRect(10, 10, 75, 25));
     order->setText("Order");
+    check_timer = new QTimer(this);
+    check_timer->setInterval(100);
+
     connect(order, &QPushButton::clicked, this, &modeling::send_order);
     connect(deliver_timer1, &QTimer::timeout, this, &modeling::deliver_order);
     connect(deliver_timer2, &QTimer::timeout, this, &modeling::deliver_order);
@@ -114,20 +117,19 @@ void modeling::deliver_order() {
             scene->addItem(line);
         }
         if(!delliveler1) {
-
             delliveler1 = new QLabel();
             delliveler1->setGeometry(QRect(beg->x(), beg->y(), 7, 7));
             delliveler1->setFixedSize(7, 7);
             delliveler1->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 3px;");
             scene->addWidget(delliveler1);
-            Animation *a = new Animation(points, delliveler1);
-            a->moveToThread(frst);
-            frst->start();
-            a->startAnimation(delliveler1, item);
-
-            delete delliveler1;
-            delliveler1 = 0;
-
+             animation1 = new Animation(points, delliveler1);
+            // a->moveToThread(frst);
+            items1 = item;
+            animation1->startAnimation(delliveler1, item);
+            connect(animation1, &Animation::animationFinished, this, &modeling::stop_1);
+            // frst->start();
+            //delete delliveler1;
+            // delliveler1 = 0;
         } else if(!delliveler2) {
 
             delliveler2 = new QLabel();
@@ -136,30 +138,61 @@ void modeling::deliver_order() {
             delliveler2->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 3px;");
             delliveler2->show();
             scene->addWidget(delliveler2);
-            Animation *a = new Animation(points);
-            a->moveToThread(scnd);
-            scnd->start();
-            a->startAnimation(delliveler2, item);
-
-            delete delliveler2;
-            delliveler2 = 0;
+            animation2 = new Animation(points);
+            // a->moveToThread(scnd);
+            items2 = item;
+            animation2->startAnimation(delliveler2, item);
+            connect(animation2, &Animation::animationFinished, this, &modeling::stop_2);
+            // scnd->start();
+            //delete delliveler2;
+            // delliveler2 = 0;
         } else {
-
             delliveler3 = new QLabel();
             delliveler3->setGeometry(QRect(beg->x(), beg->y(), 7, 7));
             delliveler3->setFixedSize(7, 7);
             delliveler3->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 3px;");
             delliveler3->show();
             scene->addWidget(delliveler3);
-            Animation *a = new Animation(points);
-            a->moveToThread(thrd);
-            thrd->start();
-            a->startAnimation(delliveler3, item);
+            animation3 = new Animation(points);
+            // a->moveToThread(thrd);
+            items3 = item;
+            animation3->startAnimation(delliveler3, item);
+            // thrd->start();
+            connect(animation3, &Animation::animationFinished, this, &modeling::stop_3);
 
-            delete delliveler3;
-            delliveler3  = 0;
+            // delete delliveler3;
+            // delliveler3 = 0;
         }
+    }
+}
 
+void modeling::stop_1() {
+    if(delliveler1) {
+        delete delliveler1;
+        delliveler1 = NULL;
 
+        for(int i = 0; i < items1.size(); ++i) {
+            delete items1[i];
+        }
+    }
+}
+void modeling::stop_2() {
+    if(delliveler2) {
+        delete delliveler2;
+        delliveler2 = NULL;
+        // delete animation2;
+        for(int i = 0; i < items2.size(); ++i) {
+            delete items2[i];
+        }
+    }
+}
+void modeling::stop_3() {
+    if(delliveler3) {
+        delete delliveler3;
+        delliveler3 = NULL;
+        // delete animation3;
+        for(int i = 0;i < items3.size(); ++i) {
+            delete items3[i];
+        }
     }
 }

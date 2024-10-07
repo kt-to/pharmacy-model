@@ -14,12 +14,17 @@
 #include <QGraphicsView>
 #include <QPushButton>
 #include <QThread>
+#include "Animation.h"
 class modeling : public QMainWindow {
 public:
     modeling(QString s);
     void new_order(int a, int b);
     void deliver_order();
     void send_order();
+    void stopanim();
+    void stop_1();
+    void stop_2();
+    void stop_3();
 private:
     QPushButton *order;
     QString file;
@@ -35,6 +40,14 @@ private:
     QLabel* back;
     QGraphicsScene *scene;
     QGraphicsView *view;
+    QTimer * check_timer;
+
+    Animation *animation1;
+    Animation *animation2;
+    Animation *animation3;
+    std::vector <QGraphicsItem*> items1;
+    std::vector <QGraphicsItem*> items2;
+    std::vector <QGraphicsItem*> items3;
 };
 
 

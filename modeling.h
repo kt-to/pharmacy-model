@@ -15,6 +15,7 @@
 #include <QPushButton>
 #include <QThread>
 #include "Animation.h"
+#include <QTableWidget>
 class modeling : public QMainWindow {
 public:
     modeling(QString s);
@@ -30,7 +31,7 @@ private:
     QLabel* curr_time;
     QPushButton *order;
     QString file;
-    QPoint *beg = new QPoint(1050, 940);
+    QPoint *beg = new QPoint(1040, 920);
     std::vector <int> horisontal_roads;
     std::vector <int> vertical_roads;
     QLabel *delliveler1 = 0, *delliveler2 = 0, *delliveler3 = 0;
@@ -45,6 +46,7 @@ private:
     QTimer * check_timer;
 //ура
     int min, hour;
+    int month = 8, day;
     QTimer* time;
     Animation *animation1;
     Animation *animation2;

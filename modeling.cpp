@@ -9,7 +9,7 @@
 
 modeling::modeling(QString s) {
     file = s;
-    this->setFixedHeight(900);
+    this->setFixedHeight(700);
     this->setFixedWidth(1100);
     horisontal_roads.resize(7);
     horisontal_roads[0] = 5;
@@ -37,7 +37,7 @@ modeling::modeling(QString s) {
     view = new QGraphicsView(this);
     scene = new QGraphicsScene();
     view->setScene(scene);
-    view->setGeometry(QRect(50, 100, 1000, 600));
+    view->setGeometry(QRect(50, 70, 1000, 600));
     scene->setSceneRect(0,0, 1300, 1000);
     back = new QLabel();
     back->setGeometry(QRect(0, 0, 1300, 1000));
@@ -90,7 +90,8 @@ void modeling::new_order(int a, int b) {
     // b = vertical_roads[last_vertucal_road] - 10;
     int curr_h;
     int curr_v;
-
+    month = 8;
+    day = 1;
     curr_v = beg->x();
     curr_h = beg->y();
     std::vector <QPoint> points;
@@ -100,10 +101,14 @@ void modeling::new_order(int a, int b) {
     //    last_horisontal_road--;
     //     curr_h = horisontal_roads[last_horisontal_road];
     //     if(curr_h >= b) break;
-        points.push_back(QPoint(curr_v, horisontal_roads[last_horisontal_road]));
+    points.push_back(QPoint(curr_v, horisontal_roads[last_horisontal_road]));
     // }
     points.push_back(QPoint(a, horisontal_roads[last_horisontal_road]));
     points.push_back(QPoint(a, b));
+    points.push_back(QPoint(a, horisontal_roads[last_horisontal_road]));
+    points.push_back(QPoint(curr_v, horisontal_roads[last_horisontal_road]));
+    points.push_back(QPoint(curr_v, curr_h));
+
     deliver_queue.push(points);
 }
 
@@ -118,6 +123,7 @@ void modeling::deliver_order() {
         std::vector <QPoint> points = deliver_queue.front();
         deliver_queue.pop();
         std::vector <QGraphicsItem*> item;
+
         for(int i = 1; i < points.size(); ++i) {
             QGraphicsLineItem * line = new QGraphicsLineItem();
             line->setPen(QPen(Qt::red));
@@ -179,7 +185,6 @@ void modeling::stop_1() {
     if(delliveler1) {
         delete delliveler1;
         delliveler1 = NULL;
-
         for(int i = 0; i < items1.size(); ++i) {
             delete items1[i];
         }
@@ -189,7 +194,6 @@ void modeling::stop_2() {
     if(delliveler2) {
         delete delliveler2;
         delliveler2 = NULL;
-        // delete animation2;
         for(int i = 0; i < items2.size(); ++i) {
             delete items2[i];
         }
@@ -200,7 +204,6 @@ void modeling::stop_3() {
     if(delliveler3) {
         delete delliveler3;
         delliveler3 = NULL;
-        // delete animation3;
         for(int i = 0;i < items3.size(); ++i) {
             delete items3[i];
         }
@@ -212,12 +215,16 @@ void modeling::update_time() {
         hour++;
         min = 0;
     } else {
-
         min++;
     }
     if(hour == 23) {
-        time->stop();
+        day++;
+        hour = 8;
+        if(day==31) {
+            month++;
+            day = 1;
+        }
     }
-    curr_time->setText(QString::number(hour) + ':' +  ( (min < 10) ? QString::number(0): "") + QString::number(min));
+    curr_time->setText( ( (month < 10) ? QString::number(0): "")  + QString::number(month) +  '-'+( (day < 10) ? QString::number(0): "")+QString::number(day) +' ' + QString::number(hour) + ':' +  ( (min < 10) ? QString::number(0): "") + QString::number(min));
 
 }

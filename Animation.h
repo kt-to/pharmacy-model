@@ -25,7 +25,7 @@ public:
                 for(int i = 1; i < points.size(); ++i){
                     animation = new QPropertyAnimation(targetObject, "pos");
                     int dur = (int) (fmax(abs(points[i-1].x() - points[i].x()), abs(points[i-1].y() - points[i].y())));
-                    animation->setDuration(dur * 15);
+                    animation->setDuration(dur * 2);
                     animation->setStartValue(points[i-1]);
                     animation->setEndValue(points[i]);
                     animationGroup->addAnimation(animation);

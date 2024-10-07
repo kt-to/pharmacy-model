@@ -19,7 +19,7 @@ add_executable(pharmacy_model
         modeling.h
         modeling.cpp
         Animation.h
-        person.h back.h ill.cpp medicament.h)
+        person.h back.h ill.cpp medicament.h person.cpp back.cpp)
 target_link_libraries(pharmacy_model
         Qt::Core
         Qt::Gui

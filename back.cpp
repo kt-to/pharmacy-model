@@ -18,3 +18,17 @@ std::string gen_man() {
     std::mt19937 rd;
     return all[rd() % all.size()];
 }
+
+std::string gen_women() {
+    std::vector<std::string> all {
+            "Anne", "Annika", "Berta",
+            "Bianka", "Carry", "Elke",
+            "Eva", "Friedl", "Grit", "Helga",
+            "Hilda", "Irmgard", "Johanna",
+            "Kerstin", "Wenzel", "Adolf",
+            "Tanja"
+    };
+    std::mt19937 rd;
+    return all[rd() % all.size()];
+}
+

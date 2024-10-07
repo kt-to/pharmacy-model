@@ -7,6 +7,7 @@
 #include "random"
 
 person::person() {
+    srand(time(0));
     std::mt19937 rd;
     _gender = (rd() % 2 == 1);
     if (_gender) {
@@ -18,4 +19,11 @@ person::person() {
     _age = 16 + (rd() % 74);
     _med_card = {};
     _therapy = {};
+}
+
+void person::print() {
+    std::cout << "name: " << _name << "\n";
+    std::cout << "surname: " << _surname << "\n";
+    std::cout << "age: " << _age << "\n";
+    std::cout << "-------------------------------\n";
 }

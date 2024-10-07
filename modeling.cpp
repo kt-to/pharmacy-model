@@ -9,8 +9,8 @@
 
 modeling::modeling(QString s) {
     file = s;
-    this->setFixedHeight(1100);
-    this->setFixedWidth(1300);
+    this->setFixedHeight(900);
+    this->setFixedWidth(1100);
     horisontal_roads.resize(7);
     horisontal_roads[0] = 5;
     horisontal_roads[1] = 190;
@@ -54,34 +54,40 @@ void modeling::new_order(int a, int b) {
     int last_horisontal_road = 6;
     int last_vertucal_road = 3;
     for(int i = 0 ; i < 7; ++i) {
-        if(horisontal_roads[i] >= a) {
+        if(horisontal_roads[i] >= b) {
             last_horisontal_road = i;
             break;
         }
     }
     for(int i = 0 ; i < 4; ++i) {
-        if(vertical_roads[i] >= b) {
+        if(vertical_roads[i] >= a) {
             last_vertucal_road = i;
             break;
         }
     }
-    b = vertical_roads[last_vertucal_road ] ;
+    b = horisontal_roads[last_horisontal_road] ;
     // b = vertical_roads[last_vertucal_road] - 10;
     int curr_h;
     int curr_v;
-    curr_h = beg->x();
-    curr_v = beg->y();
+    curr_v = beg->x();
+    curr_h = beg->y();
     std::vector <QPoint> points;
-    points.push_back(QPoint(curr_h, curr_v));
+    points.push_back(QPoint(curr_v, curr_h));
 
-    while(curr_v > b) {
-        last_horisontal_road = last_horisontal_road - 1;
-        curr_v = horisontal_roads[last_horisontal_road] ;
-        if(curr_v > b) break;
-        points.push_back(QPoint(curr_h, curr_v));
-    }
+    // while(curr_h >= b) {
+    //    last_horisontal_road--;
+    //     curr_h = horisontal_roads[last_horisontal_road];
+    //     if(curr_h >= b) break;
+        points.push_back(QPoint(curr_v, horisontal_roads[last_horisontal_road]));
+    // }
     points.push_back(QPoint(a, b));
     deliver_queue.push(points);
+}
+
+void modeling::send_order() {
+    int a = QInputDialog::getInt(this, "int", "int");
+    int b = QInputDialog::getInt(this, "int", "int");
+    new_order(a, b);
 }
 
 void modeling::deliver_order() {
@@ -90,23 +96,25 @@ void modeling::deliver_order() {
         deliver_queue.pop();
         if(!delliveler1) {
             delliveler1 = new QLabel();
-            delliveler1->setGeometry(QRect(beg->x(), beg->y(), 8, 8));
+            delliveler1->setGeometry(QRect(beg->x(), beg->y(), 10, 10));
             delliveler1->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 4px;");
             scene->addWidget(delliveler1);
-
+            delliveler1->show();
             Animation *a = new Animation(points);
             a->moveToThread(frst);
             a->startAnimation(delliveler1);
+            delete delliveler1;
 
         } else if(!delliveler2) {
             delliveler2 = new QLabel();
-            delliveler2->setGeometry(QRect(beg->x(), beg->y(), 100, 100));
+            delliveler2->setGeometry(QRect(beg->x(), beg->y(), 10, 10));
             delliveler2->setStyleSheet("background-color: rgb(40, 0, 200); border-radius: 2px;");
             delliveler2->show();
             scene->addWidget(delliveler2);
             Animation *a = new Animation(points);
             a->moveToThread(frst);
             a->startAnimation(delliveler2);
+            delete delliveler2;
         } else {
             delliveler3 = new QLabel();
             delliveler3->setGeometry(QRect(beg->x(), beg->y(), 100, 100));
@@ -116,11 +124,8 @@ void modeling::deliver_order() {
             Animation *a = new Animation(points);
             a->moveToThread(frst);
             a->startAnimation(delliveler3);
+            delete delliveler3;
         }
+        deliver_timer->start();
     }
-}
-
-void modeling::send_order() {
-    int a = 200, b = 200;
-    new_order(a, b);
 }

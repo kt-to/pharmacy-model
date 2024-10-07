@@ -7,7 +7,7 @@
 #include "mainwindow.h"
 int main(int argc, char* argv[])
 {
-    std::cout << "hello world";
+    // std::cout << "hello world";
     QApplication a(argc, argv);
     std::string s = *argv;
     mainwindow w(s);

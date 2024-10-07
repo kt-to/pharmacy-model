@@ -23,7 +23,7 @@ public:
 private:
     QPushButton *order;
     QString file;
-    QPoint *beg = new QPoint(1047, 700);
+    QPoint *beg = new QPoint(1050, 940);
     std::vector <int> horisontal_roads;
     std::vector <int> vertical_roads;
     QLabel *delliveler1 = 0, *delliveler2 = 0, *delliveler3 = 0;

@@ -12,10 +12,10 @@ public:
 
     void print();
 
-    void set_ref(std::string text);
-    void set_name(std::string name);
-
-    std::string get_ref();
+//    void set_ref(std::string text);
+//    void set_name(std::string name);
+//
+//    std::string get_ref();
 private:
     std::string _name;
     std::string _reference;

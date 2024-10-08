@@ -12,6 +12,13 @@ public:
     person();
     void print();
 
+    std::string get_name();
+    std::string get_surnam();
+    std::string get_age();
+    std::vector<medicament> get_therapy();
+    std::pair<int, int> get_address();
+
+
 protected:
     std::pair<int, int> _address;
     int _age;

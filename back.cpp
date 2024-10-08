@@ -53,23 +53,23 @@ std::string gen_surname() {
     return all[rd() % all.size()];
 }
 
+
+
+
 std::string gen_name_medicament() {
     srand(time(0));
     std::vector<std::string> pref {
-            "Bru", "Dro", "Arz"
+            "Bru", "Dro", "Arz", "Lo",
+            "Gool", "Re", "Jo", "Popfhi",
+            "Eloo", "Xoi", "Asor", "Ghoi",
+            "II", "Uoi", "Worm"
     };
     std::vector<std::string> suf {
-            "Angerer", "Beckmann", "Brandner",
-            "Bromberger", "Cronauer", "Dannecker",
-            "Donauer", "Emberg", "Engelkes", "Felber",
-            "Fulde", "Grotz", "Halpern",
-            "Heckendorf", "Schwaiger", "Schlitt",
-            "Saffer", "Rossbach", "Regener", "Preuss",
-            "Pirner", "Neureuther", "Luft", "Laub",
-            "Krumbiegel", "Keil", "Hofer", "Hildner",
-            "Schwichtenberg", "Stalter", "Stibbe",
-            "Teicher", "Wadewitz", "Weisiger", "Wiest",
-            "Wunsch"
+            "in", "ill", "ir",
+            "dil", "zil", "cil",
+            "fil", "moil", "ril",
+            "sill", "phil", "toil",
+            "eii", "sop", "dop"
     };
     return pref[rd() % pref.size()] + suf[rd() % suf.size()];
 }

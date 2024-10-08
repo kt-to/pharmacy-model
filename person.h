@@ -28,6 +28,6 @@ private:
     bool _gender;
     std::string _name;
     std::string _surname;
-    std::vector<std::vector<ill>> _med_card;
+    std::vector<std::vector<std::string>> _med_card;
     std::vector<medicament> _therapy;
 };

@@ -19,7 +19,8 @@ public:
 private:
     std::string _name;
     std::string _reference;
-    ill _indications;
-    int level;
+    std::string _indications;
+    int _cost;
+    int _level;
 };
 

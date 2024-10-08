@@ -18,5 +18,5 @@ medicament::medicament() {
 }
 
 void medicament::print() {
-    std::cout << _name << "\n";
+    std::cout << _indications << _name << "\n";
 }

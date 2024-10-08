@@ -18,8 +18,8 @@ int main(int argc, char* argv[])
     w.show();
 
     std::vector<medicament> all(40);
-    for (auto & i : all) {
-        i.print();
+    for (auto & to : all) {
+        to.print();
     }
 
     return QApplication::exec();

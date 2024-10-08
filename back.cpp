@@ -1,7 +1,6 @@
 //
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
-#pragma once
 #include "back.h"
 #include "vector"
 #include "random"
@@ -54,3 +53,23 @@ std::string gen_surname() {
     return all[rd() % all.size()];
 }
 
+std::string gen_name_medicament() {
+    srand(time(0));
+    std::vector<std::string> pref {
+            "Bru", "Dro", "Arz"
+    };
+    std::vector<std::string> suf {
+            "Angerer", "Beckmann", "Brandner",
+            "Bromberger", "Cronauer", "Dannecker",
+            "Donauer", "Emberg", "Engelkes", "Felber",
+            "Fulde", "Grotz", "Halpern",
+            "Heckendorf", "Schwaiger", "Schlitt",
+            "Saffer", "Rossbach", "Regener", "Preuss",
+            "Pirner", "Neureuther", "Luft", "Laub",
+            "Krumbiegel", "Keil", "Hofer", "Hildner",
+            "Schwichtenberg", "Stalter", "Stibbe",
+            "Teicher", "Wadewitz", "Weisiger", "Wiest",
+            "Wunsch"
+    };
+    return pref[rd() % pref.size()] + suf[rd() % suf.size()];
+}

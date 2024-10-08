@@ -13,6 +13,7 @@ public:
     notification(int x, int y);
     notification(person * order);
 private:
+    person* from;
 
 };
 

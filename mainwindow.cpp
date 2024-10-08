@@ -65,19 +65,52 @@ void mainwindow::start_press() {
 }
 
 void mainwindow::beer_press() {
+    ++beer;
     beer_timer->start();
+    beer_curr_i=0+(beer==2 ? 30 : 0);
+    beer_curr_j = 0;
 }
 
 void mainwindow::beer_update() {
-    QLabel *beer;
-    beer = new QLabel(this);
-    beer->setGeometry(QRect(beer_curr_i, beer_curr_j, 100, 100));
-    QString f = QString::fromStdString(this->put + "/images/beer.png");
-    QPixmap *pix = new QPixmap(f);
-    beer->setPixmap(*pix);
-    beer->show();
-    beer_curr_i+=150;
-    beer_curr_j+=(beer_curr_i > 1000 ? 110: 0);
-    if(beer_curr_i > 1000) beer_curr_i = 0;
-    if(beer_curr_j > 700) beer_timer->stop();
+    if(beer == 1){
+        QLabel *beer;
+        beer = new QLabel(this);
+        beer->setGeometry(QRect(beer_curr_i, beer_curr_j, 100, 100));
+        QString f = QString::fromStdString(this->put + "/images/beer.png");
+        QPixmap *pix = new QPixmap(f);
+        beer->setPixmap(*pix);
+        beer->show();
+        beer_curr_i+=150;
+        beer_curr_j+=(beer_curr_i > 1000 ? 110: 0);
+        if(beer_curr_i > 1000) beer_curr_i = 0;
+        if(beer_curr_j > 700) beer_timer->stop();
+    } else if(beer == 2){
+        QLabel *beer;
+        beer = new QLabel(this);
+        beer->setGeometry(QRect(beer_curr_i, beer_curr_j, 80, 100));
+
+        QString f = QString::fromStdString(this->put + "/images/vodka.png");
+        QPixmap *pix = new QPixmap(f);
+        beer->setPixmap(*pix);
+        beer->show();
+        beer_curr_i+=150;
+        beer_curr_j+=(beer_curr_i > 1000 ? 110: 0);
+        if(beer_curr_i > 1000) beer_curr_i = 30;
+        if(beer_curr_j > 700) beer_timer->stop();
+    } else {
+        QLabel *beer;
+        beer = new QLabel(this);
+        beer->setGeometry(QRect(beer_curr_i, beer_curr_j, 79, 100));
+
+        QString f = QString::fromStdString(this->put + "/images/zakuson.png");
+        QPixmap *pix = new QPixmap(f);
+        beer->setPixmap(*pix);
+        beer->show();
+        beer_curr_i+=150;
+        beer_curr_j+=(beer_curr_i > 1000 ? 110: 0);
+        if(beer_curr_i > 1000) beer_curr_i = 0;
+        if(beer_curr_j > 700) beer_timer->stop();
+    }
+
+
 }

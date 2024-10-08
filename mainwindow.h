@@ -24,6 +24,7 @@ private:
     QTimer * beer_timer;
     int beer_curr_i = 0;
     int beer_curr_j = 0;
+    int beer = 0;
 };
 
 

@@ -3,13 +3,20 @@
 //
 #include "medicament.h"
 #include "random"
-#include ""
+#include "ill.cpp"
+#include "back.h"
+#include "iostream"
 
 std::mt19937 rg;
 
 medicament::medicament() {
     level = rg() % 10;
-    _name = "Ha";
+    _name = gen_name_medicament();
     _reference = "ref";
-    _indications = rg % ;
+    _indications = ill(rg() % 12);
+
+}
+
+void medicament::print() {
+    std::cout << _name << "\n";
 }

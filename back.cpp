@@ -49,17 +49,17 @@ std::string gen_women() {
 std::string gen_surname() {
     srand(time(0));
     std::vector<std::string> all {
-            "Angerer", "Beckmann", "Brandner",
-            "Bromberger", "Cronauer", "Dannecker",
-            "Donauer", "Emberg", "Engelkes", "Felber",
-            "Fulde", "Grotz", "Halpern",
-            "Heckendorf", "Schwaiger", "Schlitt",
-            "Saffer", "Rossbach", "Regener", "Preuss",
-            "Pirner", "Neureuther", "Luft", "Laub",
-            "Krumbiegel", "Keil", "Hofer", "Hildner",
-            "Schwichtenberg", "Stalter", "Stibbe",
-            "Teicher", "Wadewitz", "Weisiger", "Wiest",
-            "Wunsch"
+            "Müller", "Schmidt", "Schneider",
+            "Fischer", "Weber", "Wagner",
+            "Hoffmann", "Koch", "Klein",
+            "Neumann", "Zimmermann", "Lehmann",
+            "Peters", "Peters", "Sommer",
+            "Horn", "Simon", "Bock",
+            "Thiel", "Graf", "Johansson",
+            "Hansen", "Andersen", "Pedersen",
+            "Olesen", "Nyström", "Gustafsson",
+            "Fridman", "Aas", "Jansson",
+            "Viklund", "Norrström", "Lindholm"
     };
     return all[rd() % all.size()];
 }

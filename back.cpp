@@ -3,6 +3,7 @@
 //
 #include "back.h"
 #include "medicament.h"
+#include "person.h"
 #include "vector"
 #include "random"
 
@@ -64,9 +65,6 @@ std::string gen_surname() {
     };
     return all[rd() % all.size()];
 }
-
-
-
 
 std::string gen_name_medicament() {
     srand(time(0));
@@ -143,4 +141,26 @@ std::string gen_ref(medicament& object) {
     ans += object.get_indications();
     ans += " ills";
     return ans;
+}
+
+void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med, int day_number = 0) {
+    while (coins >= 1030) {
+        auto elem = all_med[rd() % all_med.size()];
+        base.push_back(elem);
+        coins -= elem.get_cost();
+    }
+}
+
+void end_day(std::vector<person>& base, std::vector<person>& dad_list) {
+    std::vector<person> ans, ans2;
+    for (auto to : base) {
+        if (to.is_alive()) {
+            to.day_end();
+            ans.push_back(to);
+        } else {
+            ans2.push_back(to);
+        }
+    }
+    base = ans;
+    dad_list = ans2;
 }

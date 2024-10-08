@@ -11,8 +11,8 @@ class person;
 
 
 // service functions
-void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med);
-void end_day(std::vector<person>& base);
+void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med, int day_number = 0);
+void end_day(std::vector<person>& base, std::vector<person>& dad_list);
 
 // generatos
 std::string gen_man();

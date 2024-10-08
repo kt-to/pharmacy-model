@@ -17,7 +17,22 @@ medicament::medicament() {
     _name = gen_name_medicament();
     _reference = "ref";
     _indications = gen_ill();
+}
 
+std::string medicament::get_name() {
+    return _name;
+}
+
+std::string medicament::get_indications() {
+    return _indications;
+}
+
+std::string medicament::get_ref() {
+    return _reference;
+}
+
+int medicament::get_level() {
+    return _level;
 }
 
 void medicament::print() {

@@ -20,6 +20,7 @@ public:
     std::string get_ref();
 
     int get_level();
+    int get_cost();
 private:
     std::string _name;
     std::string _reference;

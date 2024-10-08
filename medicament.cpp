@@ -6,17 +6,23 @@
 #include "ill.cpp"
 #include "back.h"
 #include "iostream"
+#include "algorithm"
 
 std::mt19937 rg;
 
 medicament::medicament() {
-    level = rg() % 10;
+    _level = rg() % 10;
+    int a = _level * 100 + rg() % 51 - 26;
+    _cost = std::max(a, 10);
     _name = gen_name_medicament();
     _reference = "ref";
-    _indications = ill(rg() % 12);
+    _indications = gen_ill();
 
 }
 
 void medicament::print() {
-    std::cout << _name << "\n";
+    std::cout << _name << "\n"
+    << _indications << "\n" <<
+    "Level: " << _level << "\n" <<
+    _cost << "$ " << "\n\n";
 }

@@ -18,6 +18,9 @@ public:
     std::vector<medicament> get_therapy();
     std::pair<int, int> get_address();
 
+    bool is_alive();
+    bool it_his_time(int hour, int minute);
+    void day_end();
 
 protected:
     std::pair<int, int> _address;

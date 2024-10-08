@@ -18,8 +18,8 @@ person::person() {
     _address = {r2d2() % 1000, r2d2() % 1000};
     _surname = gen_surname();
     _age = 16 + (r2d2() % 74);
-    _free_time_hour = 8 + r2d2() % 15;
-    _free_time_minute = r2d2() % 60;
+    _free_time_hour = gen_hour();
+    _free_time_minute = gen_minute();
     _coins = r2d2() % 10'000;
     _med_card = {};
     _therapy = {};

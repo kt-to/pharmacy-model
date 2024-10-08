@@ -71,6 +71,7 @@ void mainwindow::beer_press() {
     beer_curr_j = 0;
 }
 
+
 void mainwindow::beer_update() {
     if(beer == 1){
         QLabel *beer;

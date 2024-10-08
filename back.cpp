@@ -11,12 +11,19 @@ std::mt19937 rd(time(nullptr));
 std::string gen_man() {
     srand(time(0));
     std::vector<std::string> all {
-        "Adelbert", "Alois", "Bernhard",
-        "Christoph", "Dieter", "Gustl",
-        "Hanno", "Gotz", "Eric", "Henri",
+        "Adelbert", "Christoph", "Hanno",
+        "Gotz", "Eric", "Henri",
         "Jan", "Johann", "Konrad",
         "Willi", "Wenzel", "Adolf",
-        "Vlaaaaad"
+        "Christer", "Olof", "Ivan",
+        "Ivar", "Hans", "Folke",
+        "Lukas", "Magnus", "Matias",
+        "Mikael", "Otto", "Owe",
+        "Philip", "Robert", "Ronald",
+        "Simon", "Sten", "Staffan",
+        "Teodor", "Vilhelm", "Vincent",
+        "Trofim", "Victor", "Valery",
+        "Vladislav", "Rostislav"
     };
 
     return all[rd() % all.size()];
@@ -25,12 +32,16 @@ std::string gen_man() {
 std::string gen_women() {
     srand(time(0));
     std::vector<std::string> all {
-            "Anne", "Annika", "Berta",
-            "Bianka", "Carry", "Elke",
-            "Eva", "Friedl", "Grit", "Helga",
-            "Hilda", "Irmgard", "Johanna",
-            "Kerstin", "Wenzel", "Adolf",
-            "Tanja"
+            "Anne", "Eva", "Helga",
+            "Hilda", "Johanna", "Alexandra",
+            "Kerstin", "Christina", "Dora",
+            "Melania", "Maria", "Lena",
+            "Joanna", "Olga", "Polina",
+            "Valeria", "Margarete", "Lina",
+            "Tamara", "Vera", "Veronica",
+            "Dominika", "Diana", "Sabina",
+            "Janne", "Katrin", "Ulla",
+            "Kazimiera", "Karolina", "Lada"
     };
     return all[rd() % all.size()];
 }
@@ -59,17 +70,26 @@ std::string gen_surname() {
 std::string gen_name_medicament() {
     srand(time(0));
     std::vector<std::string> pref {
-            "Bru", "Dro", "Arz", "Lo",
-            "Gool", "Re", "Jo", "Popfhi",
-            "Eloo", "Xoi", "Asor", "Ghoi",
-            "II", "Uoi", "Worm"
+            "Ali", "Poli", "Roli",
+            "Cher", "Oli", "Woff",
+            "Sup", "Fon", "Rix",
+            "Demo", "Nai", "Cof",
+            "Tea", "Qti", "North",
+            "Xor", "Dela", "Koka",
+            "Thinka", "Zor", "Geo",
+            "Aero", "Vits", "Ridip",
+            "Fisil", "Jor", "Morfol",
+            "Paino", "Wormore", "Javap",
+            "Isdo", "Hallo", "Rhich"
     };
     std::vector<std::string> suf {
             "in", "ill", "ir",
             "dil", "zil", "cil",
             "fil", "moil", "ril",
             "sill", "phil", "toil",
-            "eii", "sop", "dop"
+            "sop", "dop", "lop",
+            "cin", "cop", "jod",
+            "r", "nod", "dt"
     };
     return pref[rd() % pref.size()] + suf[rd() % suf.size()];
 }

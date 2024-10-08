@@ -5,7 +5,6 @@
 #include "iostream"
 #include <QApplication>
 #include "mainwindow.h"
-#include "medicament.h"
 
 #include "person.h"
 
@@ -16,8 +15,8 @@ int main(int argc, char* argv[])
     mainwindow w(s);
     w.show();
 
-    for (int i = 0; i < 100; i++) {
-        auto now = new medicament;
+    for (int i = 0; i < 10; i++) {
+        auto now = new person;
         now->print();
     }
 

@@ -96,16 +96,16 @@ std::string gen_name_medicament() {
 
 std::string gen_ill() {
     std::vector<std::string> ills {
-            "prevention",
             "heart",
-            "asma",
+            "lungs",
             "psychological",
             "primary_care",
             "sleeping_pills",
             "antibiotics",
             "intestine",
-            "antiretroviral",
-            "antiviral_drugs",
+            "antibacterial",
+            "STDs",
+            "oncological",
     };
     return ills[rd() % ills.size()];
 }

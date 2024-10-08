@@ -5,8 +5,6 @@
 #include "iostream"
 #include <QApplication>
 #include "mainwindow.h"
-#include "back.h"
-#include "medicament.h"
 
 #include "person.h"
 
@@ -18,9 +16,8 @@ int main(int argc, char* argv[])
 //    w.show();
 
     std::vector<medicament> all(40);
-    for (auto & to : all) {
-        to.print();
-    }
+    for (auto & i : all) {
+        i.print();
 
 //    return QApplication::exec();
 

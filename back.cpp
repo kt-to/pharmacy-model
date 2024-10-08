@@ -9,6 +9,13 @@
 
 std::mt19937 rd(time(nullptr));
 
+int gen_minute() {
+    return rd() % 60;
+}
+
+int gen_hour() {
+    return 8 + rd() % 15;
+}
 
 std::string gen_man() {
     srand(time(0));
@@ -153,7 +160,7 @@ void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& 
 
 void end_day(std::vector<person>& base, std::vector<person>& dad_list) {
     std::vector<person> ans, ans2;
-    for (auto to : base) {
+    for (auto to: base) {
         if (to.is_alive()) {
             to.day_end();
             ans.push_back(to);

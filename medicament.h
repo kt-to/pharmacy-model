@@ -15,7 +15,11 @@ public:
 //    void set_ref(std::string text);
 //    void set_name(std::string name);
 //
-//    std::string get_ref();
+    std::string get_name();
+    std::string get_indications();
+    std::string get_ref();
+
+    int get_level();
 private:
     std::string _name;
     std::string _reference;

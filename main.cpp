@@ -5,7 +5,6 @@
 #include "iostream"
 #include <QApplication>
 #include "mainwindow.h"
-#include "back.h"
 #include "medicament.h"
 
 #include "person.h"

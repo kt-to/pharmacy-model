@@ -53,6 +53,9 @@ std::string gen_surname() {
     return all[rd() % all.size()];
 }
 
+
+
+
 std::string gen_name_medicament() {
     srand(time(0));
     std::vector<std::string> pref {

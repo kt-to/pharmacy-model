@@ -15,8 +15,8 @@ medicament::medicament() {
     int a = _level * 100 + rg() % 51 - 26;
     _cost = std::max(a, 10);
     _name = gen_name_medicament();
-    _reference = "ref";
     _indications = gen_ill();
+    _reference = gen_ref(*this);
 }
 
 std::string medicament::get_name() {
@@ -39,5 +39,5 @@ void medicament::print() {
     std::cout << _name << "\n"
     << _indications << "\n" <<
     "Level: " << _level << "\n" <<
-    _cost << "$ " << "\n\n";
+    _cost << "$ \n" << _reference << "\n\n";
 }

@@ -98,14 +98,15 @@ std::string gen_name_medicament() {
 std::string gen_ill() {
     std::vector<std::string> ills {
             "heart",
-            "lungs",
+            "pulmonary",
             "psychological",
-            "primary_care",
-            "sleeping_pills",
-            "antibiotics",
-            "intestine",
+            "fractures",
+            "bleeding",
+            "sleeping",
+            "inflammation",
+            "infections",
+            "intestinal",
             "antibacterial",
-            "STDs",
             "oncological",
     };
     return ills[rd() % ills.size()];
@@ -123,22 +124,23 @@ std::string gen_ref(medicament& object) {
     ans += starts[rd() % starts.size()];
     int lv = object.get_level();
     if (lv < 2) {
-        ans += "weakly acting ";
+        ans += "lungs ";
     } else {
-        if (lv < 3) {
-            ans += "mediocre ";
+        if (lv < 5) {
+            ans += "regular ";
         } else {
-            if (lv < 5) {
-                ans += "recognized ";
+            if (lv < 7) {
+                ans += "average ";
             } else {
-                if (lv < 8) {
-                    ans += "strongly ";
+                if (lv < 9) {
+                    ans += "serious ";
                 } else {
-                    ans += "ultimatum ";
+                    ans += "deadly ";
                 }
             }
         }
     }
     ans += object.get_indications();
+    ans += " ills";
     return ans;
 }

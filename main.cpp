@@ -12,17 +12,17 @@
 
 int main(int argc, char* argv[])
 {
-    QApplication a(argc, argv);
-    std::string s = *argv;
-    mainwindow w(s);
-    w.show();
+//    QApplication a(argc, argv);
+//    std::string s = *argv;
+//    mainwindow w(s);
+//    w.show();
 
     std::vector<medicament> all(40);
     for (auto & to : all) {
         to.print();
     }
 
-    return QApplication::exec();
+//    return QApplication::exec();
 
 
 }

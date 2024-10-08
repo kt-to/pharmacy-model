@@ -19,7 +19,7 @@ public:
     std::pair<int, int> get_address();
 
 
-protected:
+private:
     std::pair<int, int> _address;
     int _age;
     int _free_time_minute;

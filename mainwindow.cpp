@@ -66,6 +66,7 @@ void mainwindow::start_press() {
 
 void mainwindow::beer_press() {
     ++beer;
+    beer%=3;
     beer_timer->start();
     beer_curr_i = 0+(beer==2 ? 30 : 0);
     beer_curr_j = 0;

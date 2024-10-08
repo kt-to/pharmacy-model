@@ -2,6 +2,7 @@
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
 #include "back.h"
+#include "medicament.h"
 #include "vector"
 #include "random"
 
@@ -108,4 +109,36 @@ std::string gen_ill() {
             "oncological",
     };
     return ills[rd() % ills.size()];
+}
+
+std::string gen_ref(medicament& object) {
+    std::string ans = "";
+    std::vector<std::string> starts {
+        "This pill helps with the disease ",
+        "This ointment helps with ",
+        "This suspension helps with ",
+        "This injection is applied ",
+        "This powder helps with "
+    };
+    ans += starts[rd() % starts.size()];
+    int lv = object.get_level();
+    if (lv < 2) {
+        ans += "weakly acting ";
+    } else {
+        if (lv < 3) {
+            ans += "mediocre ";
+        } else {
+            if (lv < 5) {
+                ans += "recognized ";
+            } else {
+                if (lv < 8) {
+                    ans += "strongly ";
+                } else {
+                    ans += "ultimatum ";
+                }
+            }
+        }
+    }
+    ans += object.get_indications();
+    return ans;
 }

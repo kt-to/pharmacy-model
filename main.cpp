@@ -15,9 +15,10 @@ int main(int argc, char* argv[])
     mainwindow w(s);
     w.show();
 
-    for (int i = 0; i < 10; i++) {
-        auto now = new person;
-        now->print();
+    std::vector<medicament> all(40);
+    for (int i = 0; i < all.size(); i++) {
+        all[i].print();
+
     }
 
     return QApplication::exec();

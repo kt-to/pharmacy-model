@@ -22,7 +22,8 @@ public:
 protected:
     std::pair<int, int> _address;
     int _age;
-    size_t _free_time;
+    int _free_time_minute;
+    int _free_time_hour;
     long long _coins;
     bool _gender;
     std::string _name;

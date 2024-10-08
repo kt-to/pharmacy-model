@@ -11,7 +11,8 @@ class person {
 public:
     person();
     void print();
-private:
+
+protected:
     std::pair<int, int> _address;
     int _age;
     size_t _free_time;

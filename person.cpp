@@ -36,3 +36,30 @@ void person::print() {
     std::cout << "    coins            " << _coins << "\n";
     std::cout << "---------------------------------------\n";
 }
+
+std::pair<int, int> person::get_address() {
+    return _address;
+}
+
+std::string person::get_age() {
+    int now = _age;
+    std::string ans;
+    while (now > 0) {
+        ans.push_back(now % 10 + '0');
+        now /= 10;
+    }
+    std::reverse(ans.begin(), ans.end());
+    return ans;
+}
+
+std::string person::get_name() {
+    return _name;
+}
+
+std::string person::get_surnam() {
+    return _surname;
+}
+
+std::vector<medicament> person::get_therapy() {
+    return _therapy;
+}

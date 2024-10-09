@@ -7,8 +7,7 @@
 enum class ill;
 class medicament;
 class person;
-
-
+class notification
 
 // service functions
 void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med, int day_number = 0);

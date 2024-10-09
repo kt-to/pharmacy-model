@@ -5,22 +5,21 @@
 #include "iostream"
 #include <QApplication>
 #include "mainwindow.h"
-
+#include "medicament.h"
 #include "person.h"
 
-int main(int argc, char* argv[])
-{
-//    QApplication a(argc, argv);
-//    std::string s = *argv;
-//    mainwindow w(s);
-//    w.show();
+int main(int argc, char* argv[]) {
+    QApplication a(argc, argv);
+    std::string s = *argv;
+    mainwindow w(s);
+    w.show();
 
 
-    std::vector<medicament> all(40);
+    std::vector<person> all(40);
     for (auto & i : all) {
         i.print();
+    }
 
-//    return QApplication::exec();
-
+    return QApplication::exec();
 
 }

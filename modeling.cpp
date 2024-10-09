@@ -6,6 +6,7 @@
 #include "Animation.h"
 #include <QTimer>
 #include <QGraphicsView>
+#include "notification.h"
 
 modeling::modeling(QString s) {
     file = s;
@@ -63,6 +64,11 @@ modeling::modeling(QString s) {
     curr_time->setGeometry(QRect(150, 10, 75, 25));
     curr_time->setText("8:00");
 
+
+    notification* root = new notification;
+    notification* notif = new notification;
+    notif->add(root, notif);
+    notif->call(root, this);
     connect(time, &QTimer::timeout, this, &modeling::update_time);
     connect(order, &QPushButton::clicked, this, &modeling::send_order);
     connect(deliver_timer1, &QTimer::timeout, this, &modeling::deliver_order);

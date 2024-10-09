@@ -5,6 +5,7 @@
 #include "notification.h"
 
 #include <random>
+#include <QtWidgets/qtextedit.h>
 
 #include "person.h"
 #include "medicament.h"
@@ -53,16 +54,30 @@ void notification::del(int ind, notification *&root) {
     }
 }
 
+void notification::make_beautiful() {
+    label->setStyleSheet("background-color: rgba(0, 0, 0, 100); border-radius: 20px;");
+    QTextEdit *name = new QTextEdit(label);
+
+    QTextEdit *surname = new QTextEdit(label);
+
+    QTextEdit *age = new QTextEdit(label);
+
+    QTextEdit *cost = new QTextEdit(label);
+
+
+
+}
 
 void notification::paint(notification *root, QWidget *parent) {
     notification* curr = root;
-    int curry = 10;
+    int curry = 80;
 
     while(curr != 0) {
         curr->label = new QLabel(parent);
         curr->label->setGeometry(800, curry, 200, 100);
         curr->label->setStyleSheet("background-color: rgb(255, 255, 255);");
         curr->label->show();
+        curr->make_beautiful();
         curry+=110;
         curr = curr->next;
     }

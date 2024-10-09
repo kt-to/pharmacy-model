@@ -14,6 +14,7 @@ public:
     notification(notification & other);
     void add_medicament_in_list(medicament& now);
     bool empty();
+    void make_beautiful();
     void call(notification* root, QWidget * parent);
     void add(notification* &root, notification * &n);
     void del(int ind,  notification *&root);

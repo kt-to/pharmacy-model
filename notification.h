@@ -2,9 +2,7 @@
 // Created by Владислав Отвагин on 08.10.2024. а писал в файле Дима ночью
 //
 
-#ifndef NOTIFICATION_H
-#define NOTIFICATION_H
-
+#pragma once
 #include "back.h"
 #include "person.h"
 
@@ -20,6 +18,3 @@ private:
     std::vector<medicament> waiting_list;
 };
 
-
-
-#endif //NOTIFICATION_H

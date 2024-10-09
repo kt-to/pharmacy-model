@@ -1,7 +1,7 @@
 //
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
-
+#pragma once
 #include "string"
 #include "iostream"
 #include "vector"

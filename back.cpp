@@ -150,7 +150,7 @@ std::string gen_ref(medicament& object) {
     return ans;
 }
 
-void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med, int day_number = 0) {
+void end_day(std::vector<medicament>& base, int coins, std::vector<medicament>& all_med, int day_number) {
     while (coins >= 1030) {
         auto elem = all_med[rd() % all_med.size()];
         base.push_back(elem);

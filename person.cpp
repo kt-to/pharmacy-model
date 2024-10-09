@@ -1,7 +1,7 @@
 //
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
-//#pragma once
+#pragma once
 #include "person.h"
 #include "medicament.h"
 #include "random"
@@ -72,6 +72,10 @@ bool person::is_alive() {
 
 bool person::it_his_time(int hour, int minute) {
     return hour == _free_time_hour && minute == _free_time_minute;
+}
+
+void person::day_end() {
+    _coins += _sellary;
 }
 
 notification person::coll(std::vector<medicament> &base) {

@@ -15,6 +15,7 @@ int main(int argc, char* argv[])
 //    mainwindow w(s);
 //    w.show();
 
+
     std::vector<medicament> all(40);
     for (auto & i : all) {
         i.print();

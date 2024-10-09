@@ -20,7 +20,7 @@ public:
 
     bool is_alive();
     bool it_his_time(int hour, int minute);
-    notification coll(std::vector<medicament>& base);
+    notification* call(std::vector<medicament>& base);
     void day_end();
 
 protected:

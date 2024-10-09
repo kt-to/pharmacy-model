@@ -37,7 +37,8 @@ void person::print() {
     << " y " << _address.second << "\n";
     std::cout << "    time when coll   " << _free_time_hour
     << ":" << _free_time_minute << "\n";
-    std::cout << "    coins            " << _coins << "\n";
+    std::cout << "    coins            " << _coins  << "$" << "\n";
+    std::cout << "    sellary          " << _sellary << "$" << "\n";
     std::cout << "---------------------------------------\n";
 }
 
@@ -78,15 +79,15 @@ void person::day_end() {
     _coins += _sellary;
 }
 
-notification person::coll(std::vector<medicament> &base) {
-    notification ans(this);
+notification* person::call(std::vector<medicament> &base) {
+    notification* ans = new notification(this);
     int mona = 0;
     for (auto [ill, level] : _med_card) {
         for (auto now : base) {
             if (now.get_indications() == ill && level <= now.get_level()
             && now.get_cost() <= _coins - mona) {
                 mona += now.get_cost();
-                ans.add_medicament_in_list(now);
+                ans->add_medicament_in_list(now);
                 break;
             }
         }

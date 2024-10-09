@@ -5,16 +5,19 @@
 #ifndef NOTIFICATION_H
 #define NOTIFICATION_H
 
+#include "back.h"
 #include "person.h"
 
-class notification{
+class notification {
 public:
-    notification();
-    notification(int x, int y);
     notification(person * order);
+
+    void add_medicament_in_list(medicament& now);
+
+    bool empty();
 private:
     person* from;
-
+    std::vector<medicament> waiting_list;
 };
 
 

@@ -1,10 +1,11 @@
 //
 // Created by Дмитрий Фоминых on 07.10.2024.
 //
-//#pragma once
+#pragma once
 #include "person.h"
 #include "medicament.h"
 #include "random"
+#include "notification.h"
 
 std::mt19937 r2d2(time(nullptr));
 
@@ -18,9 +19,10 @@ person::person() {
     _address = {r2d2() % 1000, r2d2() % 1000};
     _surname = gen_surname();
     _age = 16 + (r2d2() % 74);
-    _free_time_hour = 8 + r2d2() % 15;
-    _free_time_minute = r2d2() % 60;
-    _coins = r2d2() % 10'000;
+    _free_time_hour = gen_hour();
+    _free_time_minute = gen_minute();
+    _coins = r2d2() % 6'000;
+    _sellary = r2d2() % 1'000;
     _med_card = {};
     _therapy = {};
 
@@ -43,15 +45,8 @@ std::pair<int, int> person::get_address() {
     return _address;
 }
 
-std::string person::get_age() {
-    int now = _age;
-    std::string ans;
-    while (now > 0) {
-        ans.push_back(now % 10 + '0');
-        now /= 10;
-    }
-    std::reverse(ans.begin(), ans.end());
-    return ans;
+int person::get_age() {
+    return _age;
 }
 
 std::string person::get_name() {
@@ -64,4 +59,37 @@ std::string person::get_surnam() {
 
 std::vector<medicament> person::get_therapy() {
     return _therapy;
+}
+
+bool person::is_alive() {
+    for (auto to : _med_card) {
+        if (to.second > 10) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool person::it_his_time(int hour, int minute) {
+    return hour == _free_time_hour && minute == _free_time_minute;
+}
+
+void person::day_end() {
+    _coins += _sellary;
+}
+
+notification person::coll(std::vector<medicament> &base) {
+    notification ans(this);
+    int mona = 0;
+    for (auto [ill, level] : _med_card) {
+        for (auto now : base) {
+            if (now.get_indications() == ill && level <= now.get_level()
+            && now.get_cost() <= _coins - mona) {
+                mona += now.get_cost();
+                ans.add_medicament_in_list(now);
+                break;
+            }
+        }
+    }
+    return ans;
 }

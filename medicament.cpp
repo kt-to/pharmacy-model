@@ -35,9 +35,17 @@ int medicament::get_level() {
     return _level;
 }
 
+int medicament::get_cost() {
+    return _cost;
+}
+
 void medicament::print() {
-    std::cout << _name << "\n"
-    << _indications << "\n" <<
-    "Level: " << _level << "\n" <<
-    _cost << "$ \n" << _reference << "\n\n";
+
+    std::cout << "\n\n\n\n\n------------------------------------------------------------------------\n"
+    << "   name         " << _name << "\n"
+    << "   indications  " << _indications << "\n"
+    << "   level        " << _level << "\n"
+    << "   it cost      " << _cost << "$ \n"
+    << "   info         " << _reference <<
+    "\n------------------------------------------------------------------------\n";
 }

@@ -1,22 +1,20 @@
 //
-// Created by Владислав Отвагин on 08.10.2024.
+// Created by Владислав Отвагин on 08.10.2024. а писал в файле Дима ночью
 //
 
-#ifndef NOTIFICATION_H
-#define NOTIFICATION_H
-
+#pragma once
+#include "back.h"
 #include "person.h"
 
-class notification{
+class notification {
 public:
-    notification();
-    notification(int x, int y);
     notification(person * order);
+
+    void add_medicament_in_list(medicament& now);
+
+    bool empty();
 private:
     person* from;
-
+    std::vector<medicament> waiting_list;
 };
 
-
-
-#endif //NOTIFICATION_H

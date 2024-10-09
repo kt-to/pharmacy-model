@@ -23,7 +23,7 @@ public:
     notification coll(std::vector<medicament>& base);
     void day_end();
 
-protected:
+private:
     std::pair<int, int> _address;
     int _age;
     int _free_time_minute;

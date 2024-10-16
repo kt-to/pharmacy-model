@@ -3,7 +3,7 @@
 //
 #pragma once
 #include "string"
-
+#include "notification.h"
 enum class ill;
 class medicament;
 class person;

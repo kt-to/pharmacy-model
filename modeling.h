@@ -16,6 +16,9 @@
 #include <QThread>
 #include "Animation.h"
 #include <QTableWidget>
+#include "notification.h"
+#include "notification_list.h"
+
 class modeling : public QMainWindow {
 public:
     modeling(QString s);
@@ -54,6 +57,7 @@ private:
     std::vector <QGraphicsItem*> items1;
     std::vector <QGraphicsItem*> items2;
     std::vector <QGraphicsItem*> items3;
+    notification_list * list ;
 };
 
 

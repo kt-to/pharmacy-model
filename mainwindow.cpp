@@ -7,20 +7,27 @@
 #include "modeling.h"
 
 mainwindow::mainwindow(std::string s) {
+
     this->setFixedWidth(1000);
     this->setFixedHeight(700);
     start = new QPushButton(this);
     start->setText("Start");
     mainwindow::setbeer(s);
+    int id = QFontDatabase::addApplicationFont(QString::fromStdString(put) + "/images/Drabina/Drabina-Solid.otf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont monospace(family);
+    monospace.setPixelSize(40);
     start->setGeometry(QRect(400, 300, 200, 70));
     start->setStyleSheet("background-color: rgb(150, 1, 200); "
                          "border-radius: 10px;");
     start->show();
+    start->setFont(monospace);
+
     beerButton = new QPushButton(this);
     beerButton->setGeometry(QRect(800, 500, 100, 100));
     beerButton->setStyleSheet("background-color: rgba(255, 255, 255, 0); ");
     beer_timer = new QTimer(this);
-    beer_timer->setInterval(50);
+    beer_timer->setInterval(15);
     connect(start, &QPushButton::clicked, this, &mainwindow::start_press);
     connect(beerButton, &QPushButton::clicked, this, &mainwindow::beer_press);
     connect(beer_timer, &QTimer::timeout, this, &mainwindow::beer_update);

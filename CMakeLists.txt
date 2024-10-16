@@ -14,12 +14,12 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(pharmacy_model
         main.cpp
-        mainwindow.cpp
         mainwindow.h
         modeling.h
-        modeling.cpp
         Animation.h
-        person.h back.h ill.cpp medicament.h person.cpp back.cpp notification.h medicament.cpp notification.cpp)
+        person.h back.h ill.cpp medicament.h person.cpp back.cpp notification.h medicament.cpp notification.cpp
+        notification_list.h
+        modeling.cpp)
 target_link_libraries(pharmacy_model
         Qt::Core
         Qt::Gui

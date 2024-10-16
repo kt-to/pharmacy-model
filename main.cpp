@@ -15,6 +15,7 @@ int main(int argc, char* argv[]) {
     w.show();
 
 
+
     std::vector<person> all(40);
     for (auto & i : all) {
         i.print();

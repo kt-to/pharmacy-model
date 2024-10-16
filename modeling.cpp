@@ -12,6 +12,8 @@ modeling::modeling(QString s) {
     file = s;
     this->setFixedHeight(700);
     this->setFixedWidth(1100);
+    list = new notification_list();
+    list->set_widget(view);
     horisontal_roads.resize(7);
     horisontal_roads[0] = 5;
     horisontal_roads[1] = 190;
@@ -63,12 +65,11 @@ modeling::modeling(QString s) {
     curr_time = new QLabel(this);
     curr_time->setGeometry(QRect(150, 10, 75, 25));
     curr_time->setText("8:00");
-
-
-    notification* root = new notification;
-    notification* notif = new notification;
-    notif->add(root, notif);
-    notif->call(root, this);
+    int id = QFontDatabase::addApplicationFont(file + "/images/Drabina/Drabina-Solid.otf");
+    QString family = QFontDatabase::applicationFontFamilies(id).at(0);
+    QFont monospace(family);
+    monospace.setPixelSize(10);
+    curr_time->setFont(monospace);
     connect(time, &QTimer::timeout, this, &modeling::update_time);
     connect(order, &QPushButton::clicked, this, &modeling::send_order);
     connect(deliver_timer1, &QTimer::timeout, this, &modeling::deliver_order);
@@ -116,6 +117,8 @@ void modeling::new_order(int a, int b) {
     points.push_back(QPoint(curr_v, curr_h));
 
     deliver_queue.push(points);
+
+
 }
 
 void modeling::send_order() {
@@ -196,6 +199,7 @@ void modeling::stop_1() {
         }
     }
 }
+
 void modeling::stop_2() {
     if(delliveler2) {
         delete delliveler2;
@@ -231,6 +235,20 @@ void modeling::update_time() {
             day = 1;
         }
     }
+    if(min % 20 == 0) {
+        person* p = new person;
+        notification*n = new notification(p, view);
+        list->add_notification(n);
+        int y = 20;
+        notification* curr = list->get_root();
+        while(curr) {
+            curr->clear();
+            curr->paint(y);
+            curr = curr->get_next();
+            y+=110;
+        }
+    }
+
     curr_time->setText( ( (month < 10) ? QString::number(0): "")  + QString::number(month) +  '-'+( (day < 10) ? QString::number(0): "")+QString::number(day) +' ' + QString::number(hour) + ':' +  ( (min < 10) ? QString::number(0): "") + QString::number(min));
 
 }
